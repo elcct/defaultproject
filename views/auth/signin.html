@@ -1,0 +1,34 @@
+{{define "auth/signin"}}
+<div class="panel panel-default">
+	<div class="panel-body">
+		<form class="form-horizontal" method="post" data-parsley-validate>
+		<fieldset>
+			<legend>Sign In</legend>
+			{{range .Flash}}
+				<div class="alert alert-danger">{{.}}</div><p>
+			{{end}}
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="email">Email</label>  
+				<div class="col-md-6">
+					<input id="email" name="email" type="email" placeholder="Email address" class="form-control input-md" required="">    
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="password">Password</label>
+				<div class="col-md-6">
+					<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="signin"></label>
+				<div class="col-md-4">
+					<button id="signin" name="signin" class="btn btn-primary">Sign In</button>
+				</div>
+			</div>
+		</fieldset>
+		</form>
+	</div>
+</div>
+{{end}}

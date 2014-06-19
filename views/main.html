@@ -1,0 +1,42 @@
+{{define "main"}}
+	{{template "header" .}}
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">Default Project</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="/">Home</a></li>
+				</ul>
+				{{if .User}}
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<p class="navbar-text">
+							Hello, {{ .User.Email}}
+						</p>
+					</li>
+					<li class="active"><a href="/logout">Logout</a></li>
+				</ul>
+				{{else}}
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="/signin">Sign In</a></li>
+					<li class="active"><a href="/signup">Sign Up</a></li>
+				</ul>
+				{{end}}				
+			</div><!--/.nav-collapse -->
+		</div>
+	</div>
+	<div class="container" role="main">
+		<a href="https://github.com/elcct/defaultproject"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 2048;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	{{.Content}}	
+	</div>
+	{{template "footer" .}}
+{{end}}
