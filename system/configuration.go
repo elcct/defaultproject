@@ -1,7 +1,7 @@
 package system
 
 type ConfigurationDatabase struct {
-	Hosts string `json:"host"`
+	Hosts string `json:"hosts"`
 	Database string `json:"database"`
 }
 
