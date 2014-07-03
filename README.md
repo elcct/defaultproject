@@ -1,4 +1,4 @@
-Default Project
+Default Project [![Build Status](https://drone.io/github.com/elcct/defaultproject/status.png)](https://drone.io/github.com/elcct/defaultproject/latest)
 ===============
 
 Provides essentials that most web applications need - MVC pattern and user authorisation that can be easily extended.
