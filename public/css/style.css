@@ -48,3 +48,7 @@ textarea.parsley-error {
 .parsley-errors-list.filled {
 	opacity: 1;
 }
+
+.github {
+	margin-bottom: -5px;
+}

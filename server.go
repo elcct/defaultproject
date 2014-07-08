@@ -39,15 +39,24 @@ func main() {
 
 	controller := &controllers.MainController{}
 
+	// Couple of files - in the real world you would use nginx to serve them.
+	goji.Get("/robots.txt", http.FileServer(http.Dir(application.Configuration.PublicPath)))
+	goji.Get("/favicon.ico", http.FileServer(http.Dir(application.Configuration.PublicPath + "/images")))
+
+	// Home page
+	goji.Get("/", application.Route(controller, "Index"))
+
+	// Sign In routes
 	goji.Get("/signin", application.Route(controller, "SignIn"))
 	goji.Post("/signin", application.Route(controller, "SignInPost"))
 
+	// Sign Up routes
 	goji.Get("/signup", application.Route(controller, "SignUp"))
 	goji.Post("/signup", application.Route(controller, "SignUpPost"))
 
+	// KTHXBYE
 	goji.Get("/logout", application.Route(controller, "Logout"))
 
-	goji.Get("/", application.Route(controller, "Index"))
 
 	graceful.PostHook(func() {
 		application.Close()

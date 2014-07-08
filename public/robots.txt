@@ -1,0 +1,5 @@
+# hello robots
+
+User-agent: *
+Disallow: /logout/
+

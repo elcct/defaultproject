@@ -15,6 +15,18 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li {{if .IsIndex }}class="active"{{end}}><a href="/">Home</a></li>
+					<!-- YOU CAN REMOVE THESE ENDORSEMENTS -->
+					<li>
+						<p class="navbar-text github">
+							<iframe src="http://ghbtns.com/github-btn.html?user=elcct&repo=defaultproject&type=watch&count=true" height="30" width="118" frameborder="0" scrolling="0" style="width:118px; height: 30px;" allowTransparency="true"></iframe>
+						</p>
+					</li>
+					<li>
+						<p class="navbar-text github">					
+							<iframe src="http://ghbtns.com/github-btn.html?user=elcct&type=follow&count=true" height="30" width="168" frameborder="0" scrolling="0" style="width:168px; height: 30px;" allowTransparency="true"></iframe>
+						</p>
+					</li>
+					<!-- END OF ENDORSEMENTS -->
 				</ul>
 				{{if .User}}
 				<ul class="nav navbar-nav navbar-right">
@@ -34,8 +46,7 @@
 			</div><!--/.nav-collapse -->
 		</div>
 	</div>
-	<div class="container" role="main">
-		<a href="https://github.com/elcct/defaultproject"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 2048;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+	<div class="container" role="main">		
 	{{.Content}}	
 	</div>
 	{{template "footer" .}}
