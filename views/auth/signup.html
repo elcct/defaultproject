@@ -11,21 +11,21 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="email">Email</label>  
 				<div class="col-md-6">
-					<input id="email" name="email" type="email" placeholder="Email address" class="form-control input-md" required="">
+					<input id="email" name="email" type="email" placeholder="Email address" class="form-control input-md" required="" data-parsley-required-message="Please enter your email">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="password">Password</label>
 				<div class="col-md-6">
-					<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="">
+					<input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" required="" data-parsley-required-message="Please enter your password">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="passwordrepear">Repeat password</label>
 				<div class="col-md-6">
-					<input id="passwordrepeat" name="passwordrepeat" type="password" placeholder="Repeat password" class="form-control input-md" required="" data-parsley-equalto="#password">
+					<input id="passwordrepeat" name="passwordrepeat" type="password" placeholder="Repeat password" class="form-control input-md" required="" data-parsley-required-message="Please repeat your password" data-parsley-equalto="#password" data-parsley-equalto-message="Passwords do not match">
 				</div>
 			</div>
 
@@ -33,7 +33,7 @@
 				<label class="col-md-4 control-label" for=""></label>
 				<div class="col-md-6">
 					<label class="checkbox-inline" for="terms">
-						<input type="checkbox" name="terms" id="terms">
+						<input type="checkbox" name="terms" id="terms" required="" data-parsley-required-message="You can't continue without accepting our Terms and Conditions">
 						I accept terms and conditions
 					</label>
 				</div>
