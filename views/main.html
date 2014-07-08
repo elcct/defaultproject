@@ -14,7 +14,7 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/">Home</a></li>
+					<li {{if .IsIndex }}class="active"{{end}}><a href="/">Home</a></li>
 				</ul>
 				{{if .User}}
 				<ul class="nav navbar-nav navbar-right">
@@ -23,12 +23,12 @@
 							Hello, {{ .User.Email}}
 						</p>
 					</li>
-					<li class="active"><a href="/logout">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
 				{{else}}
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="/signin">Sign In</a></li>
-					<li class="active"><a href="/signup">Sign Up</a></li>
+					<li {{if .IsSignIn }}class="active"{{end}}><a href="/signin">Sign In</a></li>
+					<li {{if .IsSignUp }}class="active"{{end}}><a href="/signup">Sign Up</a></li>
 				</ul>
 				{{end}}				
 			</div><!--/.nav-collapse -->
