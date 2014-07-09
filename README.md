@@ -75,3 +75,34 @@ That should output something like:
 ```
 
 And it means you can now direct your browser to `localhost:8000`
+
+# Project structure
+
+`/controllers`
+
+All your controllers that serve defined routes.
+
+`/helpers`
+
+Helper functions.
+
+`/models`
+
+You database models.
+
+`/public`
+
+It has all your static files mapped to `/assets/*` path except `robots.txt` and `favicon.ico` that map to `/`.
+
+`/system`
+
+Core functions and structs.
+
+`/views`
+
+Your views using standard `Go` template system.
+
+`server.go`
+
+This file starts your web application and also contains routes definition.
+
