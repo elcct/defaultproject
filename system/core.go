@@ -110,11 +110,14 @@ func (application *Application) Route(controller interface{}, route string) inte
 		switch code {
 			case http.StatusOK:
 				if _, exists := c.Env["Content-Type"]; exists {
-					w.Header().Set("Content-Type", c.Env["Content-Type"].(string))	
+					w.Header().Set("Content-Type", c.Env["Content-Type"].(string))
 				}
-				io.WriteString(w, body)				
+				io.WriteString(w, body)
 			case http.StatusSeeOther, http.StatusFound:
-				http.Redirect(w, r, body, code)				
+				http.Redirect(w, r, body, code)
+			default:
+				w.WriteHeader(code)
+				io.WriteString(w, body)				
 		}
 	}
 	return fn
