@@ -5,6 +5,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/zenazn/goji/web"
 	"github.com/elcct/defaultproject/models"
+	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
 	"labix.org/v2/mgo"
 	"labix.org/v2/mgo/bson"
@@ -25,6 +26,7 @@ func (application *Application) ApplySessions(c *web.C, h http.Handler) http.Han
 		session, _ := application.Store.Get(r, "session")
 		c.Env["Session"] = session
 		h.ServeHTTP(w, r)
+		context.Clear(r)
 	}
 	return http.HandlerFunc(fn)
 }
