@@ -106,3 +106,84 @@ Your views using standard `Go` template system.
 
 This file starts your web application and also contains routes definition.
 
+# Make it your own
+
+I assume you have followed installation instructions and you have `defaultproject` installed in your `GOPATH` location.
+
+Let's say I want to create `Amazing Website`. I create new `GitHub` repository `https://github.com/elcct/amazingwebsite` (of course replace that with your own repository).
+
+Now I have to prepare `defaultproject`. First thing is that I have to delete its `.git` directory.
+
+I issue:
+
+```
+rm -rf src/github.com/elcct/defaultproject/.git
+```
+
+Then I want to replace all references from `github.com/elcct/defaultproject` to `github.com/elcct/amazingwebsite`:
+
+```
+grep -rl 'github.com/elcct/defaultproject' ./ | xargs sed -i 's/github.com\/elcct\/defaultproject/github.com\/elcct\/amazingwebsite/g'
+```
+
+Now I have to move all `defaultproject` files to the new location:
+
+```
+mv src/github.com/elcct/defaultproject/ src/github.com/elcct/amazingwebsite
+```
+
+And push it to my new repository at `GitHub`:
+
+```
+cd src/github.com/elcct/amazingwebsite
+git init
+git add --all .
+git commit -m "Amazing Website First Commit"
+git remote add origin https://github.com/elcct/amazingwebsite.git
+git push -u origin master
+```
+
+You can now go back to your `GOPATH` and check if everything is ok:
+
+```
+go install github.com/elcct/amazingwebsite
+```
+
+And that's it. 
+
+# Continuous Development
+
+For Continuous Development I recommend using `Fresh` - https://github.com/pilu/fresh
+
+You can install `Fresh` by issuing:
+
+```
+go get github.com/pilu/fresh
+```
+
+Then create a config file `runner.conf` in your `GOPATH`:
+
+```
+root:              ./src/github.com/elcct/amazingwebsite
+tmp_path:          ./tmp
+build_name:        runner-build
+build_log:         runner-build-errors.log
+valid_ext:         .go, .tpl, .tmpl, .html
+build_delay:       600
+colors:            1
+log_color_main:    cyan
+log_color_build:   yellow
+log_color_runner:  green
+log_color_watcher: magenta
+log_color_app:
+```
+
+Note: Remember to replace `./src/github.com/elcct/amazingwebsite` with your own location
+
+Now if you run:
+
+```
+./bin/fresh -c runner.conf
+```
+
+Project should automatically rebuild itself when a change occurs.
