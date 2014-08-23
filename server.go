@@ -5,12 +5,12 @@ import (
 	"github.com/golang/glog"
 	"net/http"
 
-	"github.com/elcct/defaultproject/controllers"
+	"github.com/elcct/defaultproject/controllers/web"
 	"github.com/elcct/defaultproject/system"
 
 	"github.com/zenazn/goji"
 	"github.com/zenazn/goji/graceful"
-	"github.com/zenazn/goji/web"
+	gojiweb "github.com/zenazn/goji/web"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 	application.ConnectToDatabase()
 
 	// Setup static files
-	static := web.New()
+	static := gojiweb.New()
 	static.Get("/assets/*", http.StripPrefix("/assets/", http.FileServer(http.Dir(application.Configuration.PublicPath))))
 
 	http.Handle("/assets/", static)
@@ -37,11 +37,11 @@ func main() {
 	goji.Use(application.ApplyDatabase)
 	goji.Use(application.ApplyAuth)
 
-	controller := &controllers.MainController{}
+	controller := &web.Controller{}
 
 	// Couple of files - in the real world you would use nginx to serve them.
 	goji.Get("/robots.txt", http.FileServer(http.Dir(application.Configuration.PublicPath)))
-	goji.Get("/favicon.ico", http.FileServer(http.Dir(application.Configuration.PublicPath + "/images")))
+	goji.Get("/favicon.ico", http.FileServer(http.Dir(application.Configuration.PublicPath+"/images")))
 
 	// Home page
 	goji.Get("/", application.Route(controller, "Index"))
@@ -56,7 +56,6 @@ func main() {
 
 	// KTHXBYE
 	goji.Get("/logout", application.Route(controller, "Logout"))
-
 
 	graceful.PostHook(func() {
 		application.Close()
