@@ -22,7 +22,7 @@ If you don't have `Go` installed, follow installation instructions described her
 Then install remaining dependecies:
 
 ```
-sudo apt-get install make git mercurial subversion bzr
+sudo apt-get install git mercurial subversion bzr
 ```
 
 MongoDB:
