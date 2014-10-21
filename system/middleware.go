@@ -7,8 +7,8 @@ import (
 	"github.com/elcct/defaultproject/models"
 	"github.com/gorilla/context"
 	"github.com/gorilla/sessions"
-	"labix.org/v2/mgo"
-	"labix.org/v2/mgo/bson"
+	mgo "gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 )
 
 // Makes sure templates are stored in the context

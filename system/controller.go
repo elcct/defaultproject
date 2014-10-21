@@ -3,7 +3,7 @@ package system
 import (
 	"bytes"
 	"html/template"
-	"labix.org/v2/mgo"
+	mgo "gopkg.in/mgo.v2"
 	"github.com/zenazn/goji/web"
 	"github.com/gorilla/sessions"
 )
