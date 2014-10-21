@@ -1,8 +1,8 @@
 package helpers
 
 import (
-	"labix.org/v2/mgo"
-	"labix.org/v2/mgo/bson"
+	mgo "gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 	"code.google.com/p/go.crypto/bcrypt"
 	"github.com/elcct/defaultproject/models"
 )
